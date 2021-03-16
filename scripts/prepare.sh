@@ -17,7 +17,7 @@ if [[ "$CBC_PLATFORM" == "osx" || "$CBC_PLATFORM" == "osx-m1" ]]; then
     ln -s /usr/local/bin/bash /usr/local/bin/coin-bash
     config_opts+=" --enable-cbc-parallel --tests none"
     if [[ "$CBC_PLATFORM" == "osx-m1" ]]; then
-        config_opts+=" --build x86_64-apple-macos10.12 --host aarch64-unknown-linux-gnu"
+        config_opts+=" --build=x86_64-apple-macos10.12 --host=aarch64-unknown-linux-gnu"
         echo "::set-output name=cflags::-target arm64-apple-macos11"
     fi
 elif [[ "$CBC_PLATFORM" == "linux" ]]; then
