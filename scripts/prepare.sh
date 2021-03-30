@@ -11,15 +11,12 @@ config_opts="--verbosity=4 \
 
 workspace="${GITHUB_WORKSPACE}"
 
-if [[ "$CBC_PLATFORM" == "osx" || "$CBC_PLATFORM" == "osx-m1" ]]; then
+if [[ "$CBC_PLATFORM" == "osx" ]]; then
     brew update  
     brew install bash dos2unix pkg-config
     ln -s /usr/local/bin/bash /usr/local/bin/coin-bash
     config_opts+=" --enable-cbc-parallel --tests none"
-    if [[ "$CBC_PLATFORM" == "osx-m1" ]]; then
-        config_opts+=" --build=x86_64-apple-macos10.12 --host=aarch64-unknown-linux-gnu"
-        echo "::set-output name=cflags::-target arm64-apple-macos11"
-    fi
+    echo "::set-output name=cflags::-arch x86_64 -arch arm64"
 elif [[ "$CBC_PLATFORM" == "linux" ]]; then
     sudo apt-get update
     sudo apt-get -y install dos2unix
