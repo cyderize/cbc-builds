@@ -101,6 +101,7 @@ jobs:
           LIB: ${{ github.workspace }}/winpthreads/lib
           CFLAGS: ${{ steps.prepare.outputs.cflags }}
           CXXFLAGS: ${{ steps.prepare.outputs.cflags }}
+          MACOSX_DEPLOYMENT_TARGET: '11.1'
       - name: Add winpthreads to CBC lib
         if: matrix.platform == 'win64'
         run: |
