@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: "0 19 * * *"
   repository_dispatch:
+  push:
 
 jobs:
   trigger:
