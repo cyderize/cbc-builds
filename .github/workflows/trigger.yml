@@ -5,6 +5,8 @@ on:
     - cron: "0 19 * * *"
   repository_dispatch:
   push:
+    branches:
+      - master
 
 jobs:
   trigger:
