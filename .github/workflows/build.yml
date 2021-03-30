@@ -124,6 +124,12 @@ jobs:
         with:
           name: cbc
           path: ${{ github.workspace }}/dist/*
+      - name: Upload build failure artifact
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: cbc-failure
+          path: ${{ github.workspace }}/*
 
   release:
     name: Create release
